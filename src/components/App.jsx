@@ -3,49 +3,42 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect,
+  Routes,
+  Navigate,
 } from 'react-router-dom';
-import Home from './components/Home';
-import Movies from './components/Movies';
-import MovieDetails from './components/MovieDetails';
-import Cast from './components/Cast';
-import Reviews from './components/Reviews';
+import Home from './Home/Home';
+import Movies from './Movies/Movies';
+import MovieDetails from './MovieDetails/MovieDetails';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
 
 // Import the API key
-import config from './config';
+import config from './Config/config';
 
 function App() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
+      <Routes>
+        <Route path="/" element={<Home />} />
         {/* Pass the API key as a prop to Movies component */}
-        <Route
-          exact
-          path="/movies"
-          render={() => <Movies apiKey={config.API_KEY} />}
-        />
+        <Route path="/movies" element={<Movies apiKey={config.API_KEY} />} />
         {/* Pass the API key as a prop to MovieDetails component */}
         <Route
-          exact
           path="/movies/:movieId"
-          render={props => <MovieDetails {...props} apiKey={config.API_KEY} />}
+          element={<MovieDetails apiKey={config.API_KEY} />}
         />
         {/* Pass the API key as a prop to Cast component */}
         <Route
-          exact
           path="/movies/:movieId/cast"
-          render={props => <Cast {...props} apiKey={config.API_KEY} />}
+          element={<Cast apiKey={config.API_KEY} />}
         />
         {/* Pass the API key as a prop to Reviews component */}
         <Route
-          exact
           path="/movies/:movieId/reviews"
-          render={props => <Reviews {...props} apiKey={config.API_KEY} />}
+          element={<Reviews apiKey={config.API_KEY} />}
         />
-        <Redirect to="/" />
-      </Switch>
+        <Navigate to="/" />
+      </Routes>
     </Router>
   );
 }
