@@ -1,12 +1,13 @@
-// components/Movie/Movie.jsx
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import API_KEY from '../Config/config';
 
 const Movie = () => {
   // Use the API key directly
   const apiKey = API_KEY;
 
-  // Rest of your component code
+  // Your component code goes here
+
+  return <div>{/* Your component JSX */}</div>;
 };
 
 export default Movie;
