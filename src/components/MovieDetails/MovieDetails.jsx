@@ -1,21 +1,12 @@
-// components/MovieDetails/MovieDetails.jsx
 import React, { useState, useEffect } from 'react';
-import API_KEY from '../Config/config';
 import { useParams } from 'react-router-dom';
 
-const MovieDetails = () => {
-  // Use the API key directly
-  const apiKey = API_KEY;
-
-  // State for storing movie details, loading state, and error state
+const MovieDetails = ({ apiKey }) => {
   const [movieDetails, setMovieDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Get movieId from URL params
   const { movieId } = useParams();
 
-  // Fetch movie details when component mounts
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -36,19 +27,16 @@ const MovieDetails = () => {
     };
 
     fetchMovieDetails();
-  }, [apiKey, movieId]); // Make sure to include apiKey and movieId as dependencies for useEffect
+  }, [apiKey, movieId]);
 
-  // Render loading state
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // Render error state
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
-  // Render fetched movie details
   return (
     <div>
       <h2>Movie Details</h2>
@@ -56,7 +44,6 @@ const MovieDetails = () => {
         <div className="movie-details">
           <h3>{movieDetails.title}</h3>
           <p>{movieDetails.overview}</p>
-          {/* Render other movie details as needed */}
         </div>
       )}
     </div>

@@ -1,21 +1,12 @@
-// components/Cast/Cast.jsx
 import React, { useState, useEffect } from 'react';
-import API_KEY from '../Config/config';
 import { useParams } from 'react-router-dom';
 
-const Cast = () => {
-  // Use the API key directly
-  const apiKey = API_KEY;
-
-  // State for storing cast information, loading state, and error state
+const Cast = ({ apiKey }) => {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Get movieId from URL params
   const { movieId } = useParams();
 
-  // Fetch cast information when component mounts
   useEffect(() => {
     const fetchCast = async () => {
       try {
@@ -36,19 +27,16 @@ const Cast = () => {
     };
 
     fetchCast();
-  }, [apiKey, movieId]); // Make sure to include apiKey and movieId as dependencies for useEffect
+  }, [apiKey, movieId]);
 
-  // Render loading state
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  // Render error state
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
-  // Render cast information
   return (
     <div>
       <h2>Cast</h2>
