@@ -1,13 +1,14 @@
-import React from 'react';
+// src/components/Cast/Cast.jsx
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Cast = ({ apiKey }) => {
   const { movieId } = useParams();
-  const [cast, setCast] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
+  const [cast, setCast] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchCast = async () => {
       try {
         setLoading(true);

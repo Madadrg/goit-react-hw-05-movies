@@ -1,13 +1,14 @@
-import React from 'react';
+// src/components/Reviews/Reviews.jsx
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const Reviews = ({ apiKey }) => {
   const { movieId } = useParams();
-  const [reviews, setReviews] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchReviews = async () => {
       try {
         setLoading(true);

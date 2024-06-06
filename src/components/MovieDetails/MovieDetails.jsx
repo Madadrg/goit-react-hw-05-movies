@@ -1,13 +1,15 @@
-import React from 'react';
+// src/components/MovieDetails/MovieDetails.jsx
+import React, { useEffect, useState } from 'react';
 import { useParams, Outlet, Link } from 'react-router-dom';
+import './MovieDetails.css'; // Import the CSS file
 
 const MovieDetails = ({ apiKey }) => {
   const { movieId } = useParams();
-  const [movie, setMovie] = React.useState(null);
-  const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
         setLoading(true);
@@ -45,7 +47,7 @@ const MovieDetails = ({ apiKey }) => {
         alt={movie.title}
       />
       <p>{movie.overview}</p>
-      <nav>
+      <nav className="movie-details-nav">
         <Link to="cast">Cast</Link>
         <Link to="reviews">Reviews</Link>
       </nav>
