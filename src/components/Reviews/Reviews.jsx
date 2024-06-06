@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 const Reviews = () => {
   // Use the API key directly
-  const apiKey = API_KEY;
+  const apiKey = '5b28406cf15f01386b735b4e48c0f3f4';
 
   // State for storing reviews, loading state, and error state
   const [reviews, setReviews] = useState([]);

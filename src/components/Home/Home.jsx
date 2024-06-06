@@ -1,6 +1,6 @@
 // components/Home/Home.jsx
 import React, { useState, useEffect } from 'react';
-import API_KEY from '../Config/config';
+import config from '../Config/config';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -12,7 +12,7 @@ const Home = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+          `https://api.themoviedb.org/3/trending/movie/day?api_key=${config.API_KEY}`
         );
         if (!response.ok) {
           throw new Error('Failed to fetch trending movies');

@@ -4,7 +4,7 @@ import { API_KEY } from '../../config';
 
 const Search = () => {
   // Use the API key directly
-  const apiKey = API_KEY;
+  const apiKey = '5b28406cf15f01386b735b4e48c0f3f4';
 
   // State for storing search results, loading state, and error state
   const [searchResults, setSearchResults] = useState([]);
