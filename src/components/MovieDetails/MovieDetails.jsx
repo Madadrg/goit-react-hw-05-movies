@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { useParams, Outlet, Link } from 'react-router-dom';
+import config from '../Config/config';
 
 const MovieDetails = ({ apiKey }) => {
-  const [movieDetails, setMovieDetails] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const { movieId } = useParams();
+  const [movie, setMovie] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
         setLoading(true);
@@ -18,7 +19,7 @@ const MovieDetails = ({ apiKey }) => {
           throw new Error('Failed to fetch movie details');
         }
         const data = await response.json();
-        setMovieDetails(data);
+        setMovie(data);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -39,13 +40,17 @@ const MovieDetails = ({ apiKey }) => {
 
   return (
     <div>
-      <h2>Movie Details</h2>
-      {movieDetails && (
-        <div className="movie-details">
-          <h3>{movieDetails.title}</h3>
-          <p>{movieDetails.overview}</p>
-        </div>
-      )}
+      <h2>{movie.title}</h2>
+      <img
+        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        alt={movie.title}
+      />
+      <p>{movie.overview}</p>
+      <nav>
+        <Link to="cast">Cast</Link>
+        <Link to="reviews">Reviews</Link>
+      </nav>
+      <Outlet />
     </div>
   );
 };

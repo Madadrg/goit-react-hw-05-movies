@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
 const Cast = ({ apiKey }) => {
-  const [cast, setCast] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const { movieId } = useParams();
+  const [cast, setCast] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchCast = async () => {
       try {
         setLoading(true);
@@ -39,15 +39,14 @@ const Cast = ({ apiKey }) => {
 
   return (
     <div>
-      <h2>Cast</h2>
-      <div className="cast-list">
-        {cast.map(actor => (
-          <div key={actor.id} className="actor">
-            <h3>{actor.name}</h3>
-            <p>Character: {actor.character}</p>
-          </div>
+      <h3>Cast</h3>
+      <ul>
+        {cast.map(member => (
+          <li key={member.cast_id}>
+            {member.name} as {member.character}
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

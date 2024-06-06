@@ -21,15 +21,10 @@ function App() {
         <Route
           path="/movies/:movieId"
           element={<MovieDetails apiKey={config.API_KEY} />}
-        />
-        <Route
-          path="/movies/:movieId/cast"
-          element={<Cast apiKey={config.API_KEY} />}
-        />
-        <Route
-          path="/movies/:movieId/reviews"
-          element={<Reviews apiKey={config.API_KEY} />}
-        />
+        >
+          <Route path="cast" element={<Cast apiKey={config.API_KEY} />} />
+          <Route path="reviews" element={<Reviews apiKey={config.API_KEY} />} />
+        </Route>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
