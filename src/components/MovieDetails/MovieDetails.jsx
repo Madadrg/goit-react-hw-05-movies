@@ -1,6 +1,5 @@
 import React from 'react';
 import { useParams, Outlet, Link } from 'react-router-dom';
-import config from '../Config/config';
 
 const MovieDetails = ({ apiKey }) => {
   const { movieId } = useParams();
