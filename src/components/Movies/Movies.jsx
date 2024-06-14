@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './Movies.css';
 
 const Movies = ({ apiKey }) => {
   const [movies, setMovies] = useState([]);
@@ -37,7 +38,7 @@ const Movies = ({ apiKey }) => {
   }
 
   return (
-    <div>
+    <div className="movie-list-container">
       <h2>Popular Movies</h2>
       <div className="movie-list">
         {movies.map(movie => (

@@ -1,10 +1,18 @@
 /* src/components/Navigation/Navigation.css */
 
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
 nav ul {
   display: flex;
   gap: 20px;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 nav ul li {

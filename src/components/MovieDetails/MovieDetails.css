@@ -2,6 +2,7 @@
 .movie-details-nav {
   margin-top: 20px;
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -15,4 +16,15 @@
 
 .movie-details-nav a:hover {
   background-color: #0056b3;
+}
+
+.movie-details-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.movie-details-container img {
+  width: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }

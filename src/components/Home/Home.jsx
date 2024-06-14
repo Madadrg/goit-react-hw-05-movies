@@ -1,6 +1,6 @@
-// components/Home/Home.jsx
 import React, { useState, useEffect } from 'react';
 import config from '../Config/config';
+import './Home.css';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -38,7 +38,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className="home-container">
       <h2>Trending Movies</h2>
       <div className="movie-list">
         {movies.map(movie => (
